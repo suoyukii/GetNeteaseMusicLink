@@ -1,0 +1,48 @@
+:root {
+    --dodger-blue: #1E90FF;
+    --light-steel-blue: #B0C4DE;
+    --radius: 4vmin;
+}
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 4vmin;
+}
+.center {
+    width: 80vw;
+    height: 20vmin;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.left,.right {
+    display: flex;
+    float: left;
+    height: 100%;
+}
+.left {
+    width: 60vw;
+}
+.right {
+    width: 20vw;
+}
+input, button {
+    width: 100%;
+}
+input::placeholder {
+    color: var(--light-steel-blue);
+}
+input,input:focus {
+    padding: 2vmin 8vmin;
+    color: var(--dodger-blue);
+    border: 1px solid var(--dodger-blue);
+    border-radius: var(--radius) 0 0 var(--radius);
+    outline: none;
+}
+button {
+    color: white;
+    background-color: var(--dodger-blue);
+    border: unset;
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
