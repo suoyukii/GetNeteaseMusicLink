@@ -1,23 +1,26 @@
-let btn = document.querySelector("#btn");
-btn.addEventListener("click", () => {
-    let input = document.querySelector("#url");
-    let url = input.value;
-    if (/^\d+$/.test(url)) url = "https://music.163.com/song/media/outer/url?id=" + url + ".mp3";
-    else if (/song\?id=\d+/.test(url)) url = "https://music.163.com/song/media/outer/url?id=" + url.match(/id=(\d+)/)[1] + ".mp3";
-    else if (/playlist\?id=\d+/.test(url)) {
-        input.value = "";
-        input.placeholder = "不支持 歌曲列表链接";
-        return;
-    }
-    else if (/program\?id=\d+/.test(url)) {
-        input.value = "";
-        input.placeholder = "不支持 电台链接";
-        return;
-    }
-    else {
-        input.value = "";
-        input.placeholder = "请输入 网易云链接 或者 歌曲ID";
-        return;
-    }
-    window.open(url);
+function get_link() {
+  let input = document.querySelector("input");
+  let url = input.value;
+  if (/song\?id=\d+/.test(url)) {
+    url = url.match(/id=(\d+)/)[1];
+  } else if (/playlist\?id=\d+/.test(url)) {
+    return error(input, "不支持 歌曲列表链接");
+  } else if (/program\?id=\d+/.test(url)) {
+    return error(input, "不支持 电台链接");
+  } else if (/album\/\d+/.test(url)) {
+    return error(input, "不支持 专辑链接");
+  } else {
+    if (!/^\d+$/.test(url))
+      return error(input, "请输入 网易云音乐的链接 / 歌曲ID");
+  }
+  window.open(`https://music.163.com/song/media/outer/url?id=${url}.mp3`);
+}
+function error(input, tip) {
+  input.value = "";
+  input.placeholder = tip;
+}
+
+document.querySelector("button").addEventListener("click", get_link);
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") get_link();
 });
