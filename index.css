@@ -1,48 +1,51 @@
 :root {
-    --dodger-blue: #1E90FF;
-    --light-steel-blue: #B0C4DE;
-    --radius: 4vmin;
+    --theme1: #1e90ff;
+    --theme2: #b0c4de;
+    --radius: 1vmin;
+    --box-shadow-bottom: 4px;
 }
 * {
     margin: 0;
-    padding: 0;
-    font-size: 4vmin;
+    font-size: 1.4vw;
 }
-.center {
+main {
+    display: flex;
     width: 80vw;
-    height: 20vmin;
+    height: 14vmin;
     position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
-.left,.right {
-    display: flex;
-    float: left;
-    height: 100%;
-}
-.left {
-    width: 60vw;
-}
-.right {
-    width: 20vw;
-}
-input, button {
-    width: 100%;
-}
-input::placeholder {
-    color: var(--light-steel-blue);
-}
-input,input:focus {
-    padding: 2vmin 8vmin;
-    color: var(--dodger-blue);
-    border: 1px solid var(--dodger-blue);
+input,
+input:focus {
+    flex: 5;
+    padding: 2vmin 6vmin;
+    color: var(--theme1);
+    text-align: center;
+    border: 1px solid var(--theme1);
     border-radius: var(--radius) 0 0 var(--radius);
+    box-shadow: 0 var(--box-shadow-bottom) var(--theme2);
     outline: none;
 }
+input::placeholder {
+    color: var(--theme2);
+}
 button {
+    flex: 1;
     color: white;
-    background-color: var(--dodger-blue);
+    background-color: var(--theme1);
     border: unset;
     border-radius: 0 var(--radius) var(--radius) 0;
+    box-shadow: 0 var(--box-shadow-bottom) var(--theme2);
+}
+dialog {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--theme1);
+    border: 1px solid var(--theme2);
+    border-radius: var(--radius);
+    box-shadow: 0 var(--box-shadow-bottom) var(--theme2);
+    outline: none;
 }

@@ -3,19 +3,15 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="Cache-Control" content="no-cache" />
         <title>获取网易云音乐真实链接</title>
         <link rel="stylesheet" href="index.css" />
     </head>
-    <body>
-        <section class="center">
-            <section class="left">
-                <input type="text" placeholder="支持 歌曲链接 / 歌曲ID" />
-            </section>
-            <section class="right">
-                <button type="button">获取链接</button>
-            </section>
-        </section>
+    <body onkeydown="enter_key(event)">
+        <main>
+            <input placeholder="支持 歌曲链接 / 歌曲ID" />
+            <button onclick="get_link()">获取链接</button>
+        </main>
+        <dialog />
         <script src="index.js"></script>
     </body>
 </html>
